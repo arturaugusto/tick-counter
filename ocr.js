@@ -19,10 +19,9 @@ const ocr = (maskCanvas, maskCanvasCtx, roiCanvas, roiCanvasCtx, conf) => {
 
   let digitHeigth = roiCanvas.height
 
-  conf.tickWidth = digitWidth/20
+  conf.tickWidth = digitWidth/2
   conf.tickHeight = digitHeigth/7
 
-  conf.tickWidth = Math.max(conf.tickWidth, 2)
 
   const drawPixel = (x, y, color) => {
     let roundedX = Math.round(x);
@@ -123,7 +122,7 @@ const ocr = (maskCanvas, maskCanvasCtx, roiCanvas, roiCanvasCtx, conf) => {
         0,
         maskCanvas.height/3,
         maskCanvas.width+1,
-        maskCanvas.height/3
+        maskCanvas.height/4
       )
     }
 
@@ -299,8 +298,14 @@ const ocr = (maskCanvas, maskCanvasCtx, roiCanvas, roiCanvasCtx, conf) => {
         return res ? '.' : ''
       },
       '-': () => {
-        let res = drawHorizontalCenterSegment()
-        return res ? '-' : ' '
+        let res = [
+          drawTopSegment(),
+          drawCenterSegment(),
+          drawBottomSegment()
+        ];
+        if (!res[0] && res[1] && !res[2]) return '-'
+        if ((res[0] && !res[1] && res[2]) || (res[0] && res[1] && !res[2]) || (!res[0] && res[1] && res[2])) return ' '
+        return '?'
       }
     })
     
