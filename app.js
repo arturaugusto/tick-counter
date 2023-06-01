@@ -146,13 +146,13 @@ video.addEventListener("play", () => {
 
       // operations always return a valid input for another operation.
       // if you are a functional programmer, you could easily compose these.
-      pipeline = gm.grayscale(pipeline);
+      // pipeline = gm.grayscale(pipeline);
       pipeline = gm.gaussianBlur(pipeline, 3, 3);
       // pipeline = gm.adaptiveThreshold(pipeline);
-      pipeline = gm.sobelOperator(pipeline);
-      pipeline = gm.cannyEdges(pipeline, 0.25, 0.85);
-      pipeline = gm.dilate(pipeline, [3, 3]);
-      pipeline = gm.erode(pipeline, [3, 3]);
+      // pipeline = gm.sobelOperator(pipeline);
+      // pipeline = gm.cannyEdges(pipeline, 0.25, 0.85);
+      // pipeline = gm.dilate(pipeline, [3, 3]);
+      // pipeline = gm.erode(pipeline, [3, 3]);
 
 
       // allocate output tensor
@@ -206,7 +206,9 @@ video.addEventListener("play", () => {
         }
       }
 
-      buffer = res
+      if (res === '-' || res === ' ') {
+        buffer = res
+      }
 
       let counter = chartValArr[chartValArr.length-1]
 
