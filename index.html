@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Camera selection</title>
+  <link rel="stylesheet" href="./app.css" />
+  <link rel="stylesheet" href="./uPlot.min.css" />
+
+</head>
+
+<body>
+
+  <main>
+
+    <div class="controls">
+      <button id="button">Get camera</button>
+      <select id="select">
+        <option></option>
+      </select>
+    </div>
+
+    <ul>
+      <li>Type a or b to toogle display region</li>
+      <li>Use arrow ← ↑ → ↓ to edit selected region (mouse doesn't work yet)</li>
+      <li>Shift + ← or → to skew region</li>
+      <li>Shift + ↑ or ↓ to change preprocessing contrast</li>
+      <li>Ctrl + ← or → to adjust space between digits</li>
+      <li>Number 1 - 9 to choose number of digits</li>
+      <li>t to toogle show preprocessed region</li>
+    </ul>
+
+
+
+    <video id="video" autoplay playsinline></video>
+
+    
+    <div class="wrapper video-wrapper">
+      <canvas id="videoCanvas"></canvas>
+      <canvas id="roiCanvas"></canvas>
+
+    </div>
+    
+    <canvas id="roi1Canvas" style="visibility: collapse;"></canvas>
+    <canvas id="mask1Canvas" style="visibility: collapse;"></canvas>
+
+    <canvas id="roi2Canvas" style="visibility: collapse;"></canvas>
+    <canvas id="mask2Canvas" style="visibility: collapse;"></canvas>
+    
+<!--     <div class="wrapper roi-1-wrapper">
+    </div>
+    
+    <div class="wrapper roi-2-wrapper">
+    </div> -->
+
+    <div class="chart-wrapper">
+      <div id="chartCanvas" class="chart-wrapper">
+    </div>
+      
+    </div>
+
+
+  </main>
+  
+
+<!--   <footer>
+    <p>Built by
+      <a href="https://twitter.com/philnash">@philnash</a>
+    </p>
+  </footer>
+ -->
+  <script src="./gammacv.min.js"></script>
+  <script src="./app.js"></script>
+  <script src="./input.js"></script>
+  <script src="./preprocess.js"></script>
+  <script src="./ocr.js"></script>
+  <script src="./uPlot.iife.js"></script>
+  <script src="./chart.js"></script>
+</body>
+
+</html>
